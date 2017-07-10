@@ -12,10 +12,10 @@
 */
 
 Route::get('/', function () {
-    // $response = Telegram::setWebhook([
-    //     'url' => 'https://telegrambot.onsells.ru/' . env('TELEGRAM_WEBHOOK_TOKEN') . '/webhook'
-    // ]);
-    // dd($response);
+    $response = Telegram::setWebhook([
+        'url' => 'https://telegrambot.onsells.ru/' . env('TELEGRAM_WEBHOOK_TOKEN') . '/webhook'
+    ]);
+    dd($response);
     // $response = Telegram::getMe();
     //
     // $botId = $response->getId();
@@ -23,7 +23,7 @@ Route::get('/', function () {
     // $username = $response->getUsername();
     //
     // var_dump($response, $botId, $firstName, $username);
-    return view('welcome');
+    // return view('welcome');
 });
 
 Route::post('/' . env('TELEGRAM_WEBHOOK_TOKEN') . '/webhook', function() {
