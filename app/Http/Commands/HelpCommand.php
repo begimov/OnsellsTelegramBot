@@ -8,7 +8,7 @@ use Telegram\Bot\Commands\Command;
 class HelpCommand extends Command
 {
     protected $name = 'help';
-    protected $description = 'Get some help';
+    protected $description = 'Получить помощь по доступным командам';
 
     public function handle($arguments)
     {

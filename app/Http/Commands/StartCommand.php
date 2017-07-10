@@ -8,25 +8,36 @@ use Telegram\Bot\Commands\Command;
 class StartCommand extends Command
 {
     protected $name = 'start';
-    protected $description = 'Command to begin with';
+    protected $description = 'Начать работу';
 
     public function handle($arguments)
     {
-        $this->replyWithMessage([
-            'text' => 'Добро пожаловать в Onsells - место самых выгодных скидок!'
-        ]);
-        // This will update the chat status to typing...
-        // $this->replyWithChatAction(['action' => Actions::TYPING]);
+        $keyboard = [
+            ['Скидки'],
+            ['Помощь'],
+        ];
 
-        // $response = array_reduce($commands, function($acc, $item) {
-        //     return $acc .= sprintf('/%s - %s' . PHP_EOL, $item->getDescription());
-        // }, '');
+        // This will update the chat status to typing...
+        $this->replyWithChatAction(['action' => Actions::TYPING]);
+
+        $reply_markup = Telegram::replyKeyboardMarkup([
+          	'keyboard' => $keyboard,
+          	'resize_keyboard' => true,
+          	'one_time_keyboard' => true
+        ]);
+
+        $this->replyWithMessage([
+            'text' => 'Добро пожаловать в Onsells - место самых выгодных скидок!',
+            'reply_markup' => $reply_markup
+        ]);
 
         // Trigger another command dynamically from within this command
         // When you want to chain multiple commands within one or process the request further.
         // The method supports second parameter arguments which you can optionally pass, By default
         // it'll pass the same arguments that are received for this command originally.
         // $this->triggerCommand('subscribe');
+
+
     }
 
 }
