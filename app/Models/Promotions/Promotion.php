@@ -50,6 +50,11 @@ class Promotion extends Model
     {
         return $this->hasOne('App\Models\Image')->where('type', 'small');
     }
+    
+    public function mediumImage()
+    {
+        return $this->hasOne('App\Models\Image')->where('type', 'medium');
+    }
 
     public function location()
     {

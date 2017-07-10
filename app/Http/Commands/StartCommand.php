@@ -13,14 +13,18 @@ class StartCommand extends Command
 
     public function handle($arguments)
     {
-        $this->reply(['Добро пожаловать в Onsells - место самых выгодных скидок!']);
+        $this->replyMsg(['Добро пожаловать в Onsells - место самых выгодных скидок!']);
 
-        $promotion = Promotion::latest()->first();
+        $promotion = Promotion::latest()->with('mediumImage')->first();
 
-        $this->reply([
+        $this->replyMsg([
             "{$promotion->promotionname}",
             "{$promotion->promotiondesc}",
             "{$promotion->website}",
+        ]);
+
+        $this->replyPhoto([
+            "{$promotion->mediumImage->path}",
         ]);
 
         // Trigger another command dynamically from within this command
@@ -30,13 +34,25 @@ class StartCommand extends Command
         // $this->triggerCommand('subscribe');
     }
 
-    private function reply($messages)
+    private function replyMsg($messages)
     {
         foreach ($messages as $message) {
             if ($message) {
                 $this->replyWithChatAction(['action' => Actions::TYPING]);
                 $this->replyWithMessage([
                     'text' => $message,
+                ]);
+            }
+        }
+    }
+
+    private function replyPhoto($imagePaths)
+    {
+        foreach ($imagePaths as $imagePath) {
+            if ($imagePath) {
+                $this->replyWithChatAction(['action' => Actions::TYPING]);
+                $this->replyWithPhoto([
+                    'photo' => "https://onsells.ru$imagePath",
                 ]);
             }
         }
