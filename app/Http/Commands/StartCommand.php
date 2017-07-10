@@ -18,13 +18,9 @@ class StartCommand extends Command
 
         $this->reply('Добро пожаловать в Onsells - место самых выгодных скидок!');
 
-        // $this->replyWithMessage([
-        //     'text' => 'Добро пожаловать в Onsells - место самых выгодных скидок!',
-        // ]);
+        $promotion = Promotion::latest()->first();
 
-        // $promotion = Promotion::latest()->first();
-
-        // $this->reply($promotion->promotionname);
+        $this->reply("{$promotion->promotionname}");
 
         // Trigger another command dynamically from within this command
         // When you want to chain multiple commands within one or process the request further.
