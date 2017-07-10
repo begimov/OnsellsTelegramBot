@@ -22,7 +22,7 @@ class StartCommand extends Command
         ]);
 
         $this->replyMsg([
-            "<b>{$promotion->promotionname}</b><br>",
+            "<b>{$promotion->promotionname}</b>",
             "{$promotion->promotiondesc} {$promotion->website}",
         ]);
 
