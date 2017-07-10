@@ -11,7 +11,10 @@
 |
 */
 
+// use App\Models\Promotions\Promotion;
+
 Route::get('/', function () {
+    // dd(Promotion::latest()->first()->promotionname);
     // $response = Telegram::setWebhook([
     //     'url' => 'https://telegrambot.onsells.ru/' . env('TELEGRAM_WEBHOOK_TOKEN') . '/webhook'
     // ]);
