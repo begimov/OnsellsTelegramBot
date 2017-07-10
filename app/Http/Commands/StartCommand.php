@@ -4,6 +4,7 @@ namespace App\Http\Commands;
 
 use Telegram\Bot\Actions;
 use Telegram\Bot\Commands\Command;
+use App\Models\Promotions\Promotion;
 
 class StartCommand extends Command
 {
