@@ -16,11 +16,11 @@ class StartCommand extends Command
         // This will update the chat status to typing...
         $this->replyWithChatAction(['action' => Actions::TYPING]);
 
-        // $this->reply('Добро пожаловать в Onsells - место самых выгодных скидок!');
+        $this->reply('Добро пожаловать в Onsells - место самых выгодных скидок!');
 
-        $this->replyWithMessage([
-            'text' => 'Добро пожаловать в Onsells - место самых выгодных скидок!',
-        ]);
+        // $this->replyWithMessage([
+        //     'text' => 'Добро пожаловать в Onsells - место самых выгодных скидок!',
+        // ]);
 
         // $promotion = Promotion::latest()->first();
 
