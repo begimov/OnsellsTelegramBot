@@ -13,14 +13,15 @@ class StartCommand extends Command
 
     public function handle($arguments)
     {
-        // This will update the chat status to typing...
-        $this->replyWithChatAction(['action' => Actions::TYPING]);
-
-        $this->reply('Добро пожаловать в Onsells - место самых выгодных скидок!');
+        $this->reply(['Добро пожаловать в Onsells - место самых выгодных скидок!']);
 
         $promotion = Promotion::latest()->first();
 
-        $this->reply("{$promotion->promotionname}");
+        $this->reply([
+            "{$promotion->promotionname}",
+            "{$promotion->promotiondesc}",
+            "{$promotion->website}",
+        ]);
 
         // Trigger another command dynamically from within this command
         // When you want to chain multiple commands within one or process the request further.
@@ -29,11 +30,16 @@ class StartCommand extends Command
         // $this->triggerCommand('subscribe');
     }
 
-    private function reply($message)
+    private function reply($messages)
     {
-      $this->replyWithMessage([
-          'text' => $message,
-      ]);
+        foreach ($messages as $message) {
+            if ($message) {
+                $this->replyWithChatAction(['action' => Actions::TYPING]);
+                $this->replyWithMessage([
+                    'text' => $message,
+                ]);
+            }
+        }
     }
 
 }
