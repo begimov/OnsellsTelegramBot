@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $response = Telegram::getMe();
+
+    $botId = $response->getId();
+    $firstName = $response->getFirstName();
+    $username = $response->getUsername();
+
+    var_dump($response, $botId, $firstName, $username);
+    // return view('welcome');
 });
