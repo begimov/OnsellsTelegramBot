@@ -18,21 +18,9 @@ class StartCommand extends Command
         // This will update the chat status to typing...
         // $this->replyWithChatAction(['action' => Actions::TYPING]);
 
-        // This will prepare a list of available commands and send the user.
-        // First, Get an array of all registered commands
-        // They'll be in 'command-name' => 'Command Handler Class' format.
-        // $commands = $this->getTelegram()->getCommands();
-
-        // $response = '';
-        // foreach ($commands as $name => $command) {
-        //     $response .= sprintf('/%s - %s' . PHP_EOL, $name, $command->getDescription());
-        // }
         // $response = array_reduce($commands, function($acc, $item) {
         //     return $acc .= sprintf('/%s - %s' . PHP_EOL, $item->getDescription());
         // }, '');
-
-        // Reply with the commands list
-        // $this->replyWithMessage(['text' => $response]);
 
         // Trigger another command dynamically from within this command
         // When you want to chain multiple commands within one or process the request further.
