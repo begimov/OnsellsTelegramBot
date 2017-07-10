@@ -17,14 +17,14 @@ class StartCommand extends Command
 
         $promotion = Promotion::latest()->with('mediumImage')->first();
 
+        $this->replyPhoto([
+            "{$promotion->mediumImage->path}",
+        ]);
+
         $this->replyMsg([
             "{$promotion->promotionname}",
             "{$promotion->promotiondesc}",
             "{$promotion->website}",
-        ]);
-
-        $this->replyPhoto([
-            "{$promotion->mediumImage->path}",
         ]);
 
         // Trigger another command dynamically from within this command

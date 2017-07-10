@@ -29,6 +29,8 @@ Route::get('/', function () {
         //
         // var_dump($response, $botId, $firstName, $username);
         // return view('welcome');
+    } else {
+        return redirect()->away('https://onsells.ru');
     }
 });
 
