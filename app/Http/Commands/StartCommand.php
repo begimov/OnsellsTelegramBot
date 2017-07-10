@@ -24,6 +24,7 @@ class StartCommand extends Command
         $this->replyMsg([
             "<b>{$promotion->promotionname}</b>",
             "{$promotion->promotiondesc} {$promotion->website}",
+            "Получить скидку https://onsells.ru/promotions{$promotion->id}"
         ]);
 
         // Trigger another command dynamically from within this command
