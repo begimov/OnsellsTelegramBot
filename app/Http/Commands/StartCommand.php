@@ -22,9 +22,9 @@ class StartCommand extends Command
         ]);
 
         $this->replyMsg([
-            "{$promotion->promotionname}",
-            "{$promotion->promotiondesc}",
-            "{$promotion->website}",
+            "<b>{$promotion->promotionname}</b></br>
+            {$promotion->promotiondesc}<br>
+            {$promotion->website}",
         ]);
 
         // Trigger another command dynamically from within this command
@@ -34,13 +34,14 @@ class StartCommand extends Command
         // $this->triggerCommand('subscribe');
     }
 
-    private function replyMsg($messages)
+    private function replyMsg($messages, $parseMode = 'HTML')
     {
         foreach ($messages as $message) {
             if ($message) {
                 $this->replyWithChatAction(['action' => Actions::TYPING]);
                 $this->replyWithMessage([
                     'text' => $message,
+                    'parse_mode' => $parseMode,
                 ]);
             }
         }
