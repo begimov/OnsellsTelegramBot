@@ -28,5 +28,6 @@ Route::get('/', function () {
 
 Route::post('/' . env('TELEGRAM_WEBHOOK_TOKEN') . '/webhook', function() {
     $update = Telegram::commandsHandler(true);
-    return 'ok';
+    return response('OK', 200)
+                  ->header('Content-Type', 'text/plain');
 });
