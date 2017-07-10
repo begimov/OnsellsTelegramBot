@@ -22,9 +22,9 @@ class StartCommand extends Command
         ]);
 
         $this->replyMsg([
-            "<b>{$promotion->promotionname}</b></br>
-            {$promotion->promotiondesc}<br>
-            {$promotion->website}",
+            "<b>{$promotion->promotionname}</b>",
+            "{$promotion->promotiondesc}",
+            "{$promotion->website}",
         ]);
 
         // Trigger another command dynamically from within this command
