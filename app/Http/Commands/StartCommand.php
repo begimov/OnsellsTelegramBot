@@ -32,6 +32,7 @@ class StartCommand extends Command
         ];
 
         $this->replyWithMessage([
+            'text' => '',
             'reply_markup' => json_encode([
               	'keyboard' => $keyboard,
               	'resize_keyboard' => true,
