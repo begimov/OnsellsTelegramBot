@@ -32,7 +32,6 @@ class StartCommand extends Command
         ];
 
         $this->replyWithMessage([
-            'text' => 'Test Keyboards',
             'reply_markup' => json_encode([
               	'keyboard' => $keyboard,
               	'resize_keyboard' => true,
