@@ -27,6 +27,24 @@ class StartCommand extends Command
             "Получить скидку https://onsells.ru/promotions/{$promotion->id}"
         ]);
 
+        $keyboard = [
+            ['7', '8', '9'],
+            ['4', '5', '6'],
+            ['1', '2', '3'],
+                 ['0']
+        ];
+
+        $reply_markup = $telegram->replyKeyboardMarkup([
+          	'keyboard' => $keyboard,
+          	'resize_keyboard' => true,
+          	'one_time_keyboard' => true
+        ]);
+
+        $this->replyWithMessage([
+            'text' => 'Test Keyboard',
+            'reply_markup' => $reply_markup,
+        ]);
+
         // Trigger another command dynamically from within this command
         // When you want to chain multiple commands within one or process the request further.
         // The method supports second parameter arguments which you can optionally pass, By default
