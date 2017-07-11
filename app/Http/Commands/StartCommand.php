@@ -40,21 +40,6 @@ class StartCommand extends Command
             ]),
         ]);
 
-        // Method One -> Create a layout just like a normal keyboard,
-        // but use Telegram\Bot\Keyboard\Keyboard::inlineButton to create each button
-        $inlineLayout = [
-            [
-                Keyboard::inlineButton(['text' => 'Test', 'callback_data' => 'data']),
-                Keyboard::inlineButton(['text' => 'Btn 2', 'callback_data' => 'data_from_btn2'])
-            ]
-        ];
-
-        $inlineKeyboard = Telegram::replyKeyboardMarkup([
-            'inline_keyboard' => $inlineLayout
-        ]);
-
-        $this->replyWithMessage(['text' => 'Start command', 'reply_markup' => $inlineKeyboard]);
-
         // Trigger another command dynamically from within this command
         // When you want to chain multiple commands within one or process the request further.
         // The method supports second parameter arguments which you can optionally pass, By default
