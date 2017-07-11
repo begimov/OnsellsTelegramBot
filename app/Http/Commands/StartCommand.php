@@ -34,15 +34,13 @@ class StartCommand extends Command
                  ['0']
         ];
 
-        $reply_markup = $telegram->replyKeyboardMarkup([
-          	'keyboard' => $keyboard,
-          	'resize_keyboard' => true,
-          	'one_time_keyboard' => true
-        ]);
-
         $this->replyWithMessage([
             'text' => 'Test Keyboard',
-            'reply_markup' => $reply_markup,
+            'reply_markup' => json_encode([
+              	'keyboard' => $keyboard,
+              	'resize_keyboard' => true,
+              	'one_time_keyboard' => true
+            ]),
         ]);
 
         // Trigger another command dynamically from within this command
