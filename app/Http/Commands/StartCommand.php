@@ -13,7 +13,7 @@ class StartCommand extends Command
 
     public function handle($arguments)
     {
-        $promotion = Promotion::latest()->with('mediumImage')->first();
+        $promotion = Promotion::inRandomOrder()->with('mediumImage')->first();
 
         $this->replyPhoto([
             "{$promotion->mediumImage->path}",
