@@ -40,12 +40,18 @@ class StartCommand extends Command
             ]),
         ]);
 
-        $inlineKeyboard = Keyboard::make()
-            ->inline()
-            ->row(
+        // Method One -> Create a layout just like a normal keyboard,
+        // but use Telegram\Bot\Keyboard\Keyboard::inlineButton to create each button
+        $inlineLayout = [
+            [
                 Keyboard::inlineButton(['text' => 'Test', 'callback_data' => 'data']),
                 Keyboard::inlineButton(['text' => 'Btn 2', 'callback_data' => 'data_from_btn2'])
-            );
+            ]
+        ];
+
+        $inlineKeyboard = Telegram::replyKeyboardMarkup([
+            'inline_keyboard' => $inlineLayout
+        ]);
 
         $this->replyWithMessage(['text' => 'Start command', 'reply_markup' => $inlineKeyboard]);
 
