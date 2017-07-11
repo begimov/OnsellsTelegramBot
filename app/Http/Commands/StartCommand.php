@@ -31,9 +31,14 @@ class StartCommand extends Command
             ['Следующая акция']
         ];
 
+        $inlineKeyboard = [
+            ['Посетить сайт']
+        ];
+
         $this->replyWithMessage([
-            'text' => 'Test Keyboard',
+            'text' => 'Test Keyboards',
             'reply_markup' => json_encode([
+                'inline_keyboard' => $inlineKeyboard,
               	'keyboard' => $keyboard,
               	'resize_keyboard' => true,
             ]),
