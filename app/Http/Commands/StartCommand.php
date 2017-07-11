@@ -4,6 +4,7 @@ namespace App\Http\Commands;
 
 use Telegram\Bot\Actions;
 use Telegram\Bot\Commands\Command;
+use Telegram\Bot\Keyboard\Keyboard;
 use App\Models\Promotions\Promotion;
 
 class StartCommand extends Command
@@ -31,18 +32,22 @@ class StartCommand extends Command
             ['Следующая акция']
         ];
 
-        $inlineKeyboard = [
-            ['Посетить сайт']
-        ];
-
         $this->replyWithMessage([
             'text' => 'Test Keyboards',
             'reply_markup' => json_encode([
-                // 'inline_keyboard' => $inlineKeyboard,
               	'keyboard' => $keyboard,
               	'resize_keyboard' => true,
             ]),
         ]);
+
+        $inlineKeyboard = Keyboard::make()
+            ->inline()
+            ->row(
+                Keyboard::inlineButton(['text' => 'Test', 'callback_data' => 'data']),
+                Keyboard::inlineButton(['text' => 'Btn 2', 'callback_data' => 'data_from_btn2'])
+            );
+
+        $this->replyWithMessage(['text' => 'Start command', 'reply_markup' => $inlineKeyboard]);
 
         // Trigger another command dynamically from within this command
         // When you want to chain multiple commands within one or process the request further.
