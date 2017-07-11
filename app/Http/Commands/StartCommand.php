@@ -40,6 +40,18 @@ class StartCommand extends Command
             ]),
         ]);
 
+        $inlineKeyboard = [
+            ['Следующая акция']
+        ];
+
+        $this->replyWithMessage([
+            'text' => 'Test Inline Keyboards',
+            'reply_markup' => json_encode([
+              	'inline_keyboard' => $inlineKeyboard,
+              	'resize_keyboard' => true,
+            ]),
+        ]);
+
         // Trigger another command dynamically from within this command
         // When you want to chain multiple commands within one or process the request further.
         // The method supports second parameter arguments which you can optionally pass, By default
