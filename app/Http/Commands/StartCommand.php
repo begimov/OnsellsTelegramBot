@@ -20,7 +20,7 @@ class StartCommand extends Command
         ]);
 
         $this->replyMsg([
-            "<b>{$promotion->promotionname}</b> {$promotion->promotiondesc} <a href=\"https://onsells.ru/promotions/{$promotion->id}\">Получить скидку</a>"
+            "<a href=\"https://onsells.ru/promotions/{$promotion->id}\"><b>{$promotion->promotionname}</b></a> {$promotion->promotiondesc}"
         ]);
 
         $keyboard = [
