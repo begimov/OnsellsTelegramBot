@@ -4,7 +4,6 @@ namespace App\Http\Commands;
 
 use Telegram\Bot\Actions;
 use Telegram\Bot\Commands\Command;
-use Telegram\Bot\Keyboard\Keyboard;
 use App\Models\Promotions\Promotion;
 
 class StartCommand extends Command
@@ -36,18 +35,6 @@ class StartCommand extends Command
             'text' => 'Test Keyboards',
             'reply_markup' => json_encode([
               	'keyboard' => $keyboard,
-              	'resize_keyboard' => true,
-            ]),
-        ]);
-
-        $inlineKeyboard = [
-            ['Следующая акция']
-        ];
-
-        $this->replyWithMessage([
-            'text' => 'Test Inline Keyboards',
-            'reply_markup' => json_encode([
-              	'inline_keyboard' => $inlineKeyboard,
               	'resize_keyboard' => true,
             ]),
         ]);
