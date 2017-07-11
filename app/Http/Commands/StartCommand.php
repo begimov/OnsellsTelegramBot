@@ -13,8 +13,6 @@ class StartCommand extends Command
 
     public function handle($arguments)
     {
-        $this->replyMsg(['Добро пожаловать в Onsells - место самых выгодных скидок!']);
-
         $promotion = Promotion::latest()->with('mediumImage')->first();
 
         $this->replyPhoto([
@@ -22,9 +20,7 @@ class StartCommand extends Command
         ]);
 
         $this->replyMsg([
-            "<b>{$promotion->promotionname}</b>",
-            "{$promotion->promotiondesc} {$promotion->website}",
-            "Получить скидку https://onsells.ru/promotions/{$promotion->id}"
+            "<b>{$promotion->promotionname}</b> {$promotion->promotiondesc} <i>https://onsells.ru/promotions/{$promotion->id}</i>"
         ]);
 
         $keyboard = [
