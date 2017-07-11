@@ -24,7 +24,7 @@ class StartCommand extends Command
         ]);
 
         $keyboard = [
-            ['Еще скидку']
+            ['/start']
         ];
 
         $this->replyWithMessage([
