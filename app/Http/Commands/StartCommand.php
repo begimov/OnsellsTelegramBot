@@ -29,6 +29,7 @@ class StartCommand extends Command
 
         $this->replyWithMessage([
             'text' => "<a href=\"https://onsells.ru/promotions/{$promotion->id}\">Получить скидку</a>",
+            'parse_mode' => 'HTML',
             'reply_markup' => json_encode([
               	'keyboard' => $keyboard,
               	'resize_keyboard' => true,
