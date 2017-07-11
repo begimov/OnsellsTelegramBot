@@ -28,10 +28,7 @@ class StartCommand extends Command
         ]);
 
         $keyboard = [
-            ['7', '8', '9'],
-            ['4', '5', '6'],
-            ['1', '2', '3'],
-                 ['0']
+            ['Следующая акция']
         ];
 
         $this->replyWithMessage([
@@ -39,7 +36,6 @@ class StartCommand extends Command
             'reply_markup' => json_encode([
               	'keyboard' => $keyboard,
               	'resize_keyboard' => true,
-              	'one_time_keyboard' => true
             ]),
         ]);
 
