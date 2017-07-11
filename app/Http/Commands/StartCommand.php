@@ -20,7 +20,7 @@ class StartCommand extends Command
         ]);
 
         $this->replyMsg([
-            "<b>{$promotion->promotionname}</b> {$promotion->promotiondesc} <a href=\"https://onsells.ru/promotions/{$promotion->id}\">Получить скидку</a>"
+            "<b>{$promotion->promotionname}</b> {$promotion->promotiondesc}"
         ]);
 
         $keyboard = [
@@ -28,7 +28,7 @@ class StartCommand extends Command
         ];
 
         $this->replyWithMessage([
-            'text' => '1',
+            'text' => "<a href=\"https://onsells.ru/promotions/{$promotion->id}\">Получить скидку</a>",
             'reply_markup' => json_encode([
               	'keyboard' => $keyboard,
               	'resize_keyboard' => true,
