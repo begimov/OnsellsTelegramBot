@@ -4,7 +4,6 @@ namespace App\Http\Commands;
 
 use Telegram\Bot\Actions;
 use Telegram\Bot\Commands\Command;
-use Telegram\Bot\Api;
 use App\Models\Promotions\Promotion;
 
 class StartCommand extends Command
@@ -35,17 +34,13 @@ class StartCommand extends Command
                  ['0']
         ];
 
-        $telegram = new Api(env('TELEGRAM_BOT_TOKEN'));
-
-        $reply_markup = $telegram->replyKeyboardMarkup([
-        	'keyboard' => $keyboard,
-        	'resize_keyboard' => true,
-        	'one_time_keyboard' => true
-        ]);
-
         $this->replyWithMessage([
             'text' => 'Test Keyboard',
-            'reply_markup' => $reply_markup
+            'reply_markup' => json_encode([
+              	'keyboard' => $keyboard,
+              	'resize_keyboard' => true,
+              	'one_time_keyboard' => true
+            ]),
         ]);
 
         // Trigger another command dynamically from within this command
